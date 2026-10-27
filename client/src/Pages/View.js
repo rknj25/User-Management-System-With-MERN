@@ -9,7 +9,7 @@ const View = () => {
     const getData = async () => {
         try {
             const response = await axios.get(
-                "http://localhost:9999/api/get"
+                " https://user-management-system-with-mern.onrender.com/api/get"
             );
 
             setUser(response.data.userData);
@@ -32,7 +32,7 @@ const View = () => {
 
         try {
             const response = await axios.delete(
-                `http://localhost:9999/api/delete/${id}`
+                ` https://user-management-system-with-mern.onrender.com/api/delete/${id}`
             );
 
             alert(response.data.message);

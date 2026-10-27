@@ -24,7 +24,7 @@ const Edit = () => {
         const getUser = async () => {
             try {
                 const response = await axios.get(
-                    `http://localhost:9999/api/get/${id}`
+                    ` https://user-management-system-with-mern.onrender.com/api/get/${id}`
                 );
 
                 const extUsr = response.data.extUsr;
@@ -50,7 +50,7 @@ const Edit = () => {
 
         try {
             const response = await axios.put(
-                `http://localhost:9999/api/update/${id}`,
+                ` https://user-management-system-with-mern.onrender.com/api/update/${id}`,
                 form
             );
 
