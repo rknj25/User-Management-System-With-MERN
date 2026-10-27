@@ -1,19 +1,19 @@
-import './App.css';
-import User from './GetUser/User';
-import AddUser from './addUser/AddUser';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import UpdateUser from './updateUser/UpdateUser';
-import DeleteUser from './delete/DeleteUser';
+import React from 'react'
+import {BrowserRouter,Routes,Route} from 'react-router-dom';
+import Add from './Pages/Add';
+import View from './Pages/View';
+import Edit from './Pages/Edit';
 
-function App() {
-  const router = createBrowserRouter([
-    { path: "/", element: <User /> },
-    { path: "/add", element: <AddUser /> },
-    {path: "/update/:id", element:<UpdateUser/>},
-    {path:"/delete/:id", element:<DeleteUser/>}
-  ]);
-
-  return <RouterProvider router={router} />;
+const App = () => {
+  return (
+    <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Add/>}/>
+          <Route path='/edit/:id' element={<Edit/>}/>
+          <Route path='/view' element={<View/>}/>
+        </Routes>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App

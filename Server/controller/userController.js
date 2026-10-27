@@ -34,8 +34,8 @@ export const add = async (req, res) => {
 export const getUser=async(req,res)=>{
     try{
         const userData=await user.find();
-        return res.json(userData)
-        return res.json({message:"data fetched.."})
+        // return res.json(userData)
+        return res.json({message:"data fetched..",userData})
     }
     catch{
         return res.json({message:"No Data fetched"})
@@ -47,10 +47,10 @@ export const getUserById=async(req,res)=>{
     try{
         const id=req.params.id;
         const extUsr=await user.findById(id)
-        if(!extUsr){
-            return res.json({message:"user not found"})
-        }
-        return res.json(extUsr)
+        // if(!extUsr){
+        //     return res.json({message:"user not found"})
+        // }
+        return res.json({message:"Existing user found",extUsr})
     }
     catch{
         return res.json({message:"error"})
@@ -60,14 +60,15 @@ export const getUserById=async(req,res)=>{
 export const update=async(req,res)=>{
     try{
          const id=req.params.id;
+         const {name,email,address}=req.body;
         const extUsr=await user.findById(id)
-        if(!extUsr){
-            return res.json({message:"user not found"})
-        }
-        const updateUser=await user.findByIdAndUpdate(id,req.body,{
-            new:true
+    
+        const updateUser=await user.findByIdAndUpdate(id,{
+            name:name,
+            email:email,
+            address:address
         })
-        return res.json({message:"user updated"})
+        return res.json({message:"user updated",updateUser})
     }
     catch{
           return res.json({message:"error"})
